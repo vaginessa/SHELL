@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/terminal_fragment">
+
+    <fragment
+        android:id="@+id/terminal_fragment"
+        android:name="in.ac.dducollegedu.shell.Terminal"
+        android:label="Terminal"
+        tools:layout="@layout/fragment_terminal">
+        <action
+            android:id="@+id/action_terminal_fragment_to_editor_fragment"
+            app:destination="@id/editor_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editor_fragment"
+        android:name="in.ac.dducollegedu.shell.Editor"
+        android:label="Script Editor"
+        tools:layout="@layout/fragment_editor">
+        <action
+            android:id="@+id/action_editor_fragment_to_terminal_fragment"
+            app:destination="@id/terminal_fragment"
+            app:popUpTo="@id/terminal_fragment" />
+    </fragment>
+</navigation>

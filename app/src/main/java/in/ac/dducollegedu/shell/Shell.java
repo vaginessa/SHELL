@@ -47,7 +47,7 @@ public class Shell {
             /*
              * Entering Command to shell
              */
-            int tries = 100;
+            int tries = 500;
             while (cmdOutput.equals("") && tries > 0) {
                 tries--;
                 BufferedWriter writer = new BufferedWriter(

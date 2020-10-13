@@ -4,7 +4,7 @@
     <PreferenceCategory app:title="Terminal Settings">
 
         <EditTextPreference
-            app:defaultValue="false"
+            app:defaultValue="android"
             app:key="shell_prompt_name"
             app:title="Shell Prompt Name"
             app:useSimpleSummaryProvider="true" />
@@ -25,7 +25,7 @@
         <SwitchPreferenceCompat
             app:key="dark"
             app:title="Dark Mode"
-            android:summary="Feature to be added"/>
+            android:summary="Feature to be added !"/>
 
     </PreferenceCategory>
 </PreferenceScreen>

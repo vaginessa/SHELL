@@ -3,5 +3,274 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="greetings">Shell Scripting Lab</string>
     <string name="enter_code_here">Enter code here !</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="part_1_notes">"
+        BASIC COMMANDS
+1. Usage of following commands: ls, pwd, tty, cat, who, who am I, rm, mkdir, rmdir, touch,
+cd.
+a) ls (listing of the files in current directory)
+ls -l (long listing of the files in current directory)
+b) pwd (path of the present working directory)
+c) tty (print the file name of the terminal connected to standard input. tty stands for TeleTYpewriter)
+tty --version (will print the version information and exits)
+d) cat filename (will print the content of the filename on terminal)
+cat main.sh (will print the content of the main file on the online shell)
+e) who (tell the system level information wrt booting, logged in users, etc.)
+f) who am I (displays the user name of the current system)
+whoami (will tell the user name of the online shell)
+g) rm filename (removes the file having filename)
+rm --help (learn about rm features)
+h) mkdir foldername (creates a folder having foldername)
+[Run the following together to check their working]
+mkdir test1
+ls
+cat test1
+i) rmdir foldername (removes the folder having foldername)
+[Run the following together to check their working]
+mkdir test1
+ls
+cat test1
+rmdir test1
+ls
+cat test1
+j) touch filename (create an empty file having filename)
+[Run the following together to check their working]
+touch test1
+ls
+k) cd foldername (change the current directory to another folder having foldername)
+cd .. (change to one folder level up in the directory structure)
+[Run following commands]
+mkdir test1
+mkdir test2
+ls
+cd test1
+touch file_test1
+ls
+cd ..
+ls
+*****************************************************************************************
+2. Usage of following commands: cal, cat(append), cat(concatenate), mv, cp, man, date.
+a) cal (shows the current month of the english calender)
+cal month year (shows the specific month of the given year)
+e.g. cal 03 2020 (shows march\'20 calender)
+*****
+b) cat(append)
+cat filename1 > filename2 (will copy the content of filename1 into filename2 from the beginning)
+cat filename1 >> filename2 (will append the content of filename1 into filename2 at the end)
+*****
+c) cat(concatenate)
+cat "filename1" "filename2" "filename3" > "filename4" (will concatenate the contents of file1,2,3 into 4)
+*****
+d) mv (moves a file or folder to another place)
+[Run following commands]
+#creates two directories
+mkdir test1
+mkdir test2
+echo "I have created two folders test1 and test2 in parent folder"
+ls
+echo "************************************"
+#created a file in test1 directory
+cd test1
+touch file_test1
+echo "I am in test1 folder"
+echo "the contents of test1 folder are"
+ls
+echo "*************************************"
+#coming back to the parent directory
+cd ..
+echo "I am back to parent folder"
+echo "the content of parent folder are"
+ls
+echo "******************************************"
+#moving the test2 in test1
+mv test2 test1
+echo "I have moved test2 folder to test1 folder"
+#going to directory test1 to check the contents
+cd test1
+echo "I am in test1 folder"
+echo "the contents of test1 are"
+ls
+******
+e)cp filename1 directory1 (create copy of the filename1 in directory1)
+[Run the command]
+#creates two directories
+mkdir test1
+mkdir test2
+touch file_test
+echo "The contents of the parent directory are"
+ls
+#copy the file into directory
+cp file_test test1
+#created a file in test1 directory
+cd test1
+touch file_test1
+echo "the contents of test1 folder are"
+ls
+******
+f)man (shows the manual of commands)
+not working on online shells
+******
+g)date (displays current date and time as per Universal time zone)
+
+**************************************************************************************************
+3. Usage of following commands: chmod, grep, tput (clear, highlight), bc.
+a) chmod (change the permissions of a file for owner, group, others, all of them)
+b) grep (it is a kind of a filter command that searches a file for a particular pattern of characters, and displays all lines that contain that pattern.)
+c) tput ()
+d) bc (basic calculator run on commandline covering up majority of arithmetic operators)
+[run the following commands]
+echo "1+2"
+echo "1+2" | bc
+add= echo "1+2" | bc
+echo $add
+****************************************************************************************************
+
+    "</string>
+
+
+    <string name="part_2_notes">"
+        Better Shell - https://www.onlinegdb.com/online_bash_shell
+Every command may or may not be ended by semicolon. depends on the versions.
+
+1. Basic List of commands
+LIST COMMAND
+a) ls (list of files in current working directory)
+b) ls -l (long listing showing various attributes)
+c) ls -t (sort filenames by last modification time)
+d) ls -u (sort filenames by last access time)
+e) ls -i (display file names with inode number)
+
+2. Simple variable declaration
+- numeric direct [num=10]
+- string in quotes [name="Ram"]
+- other variable name [num=x]
+
+3. echo command is used to print anything [variable or double quote string]
+a) echo "Hello World!" or 'Hello World' (single quote)
+b) echo variableName [will print variableName only]
+c) echo $variableName [will print value of the variable or empty of variable is not declared above]
+d) echo a statement plus variable name using :: double colons followed with $variableName
+[echo "Sum of numbers is :: $sum"
+Double colon is not required.
+    "</string>
+
+
+    <string name="part_3_notes">"
+        Better Shell - https://www.onlinegdb.com/online_bash_shell
+Every command may or may not be ended by semicolon. depends on the versions.
+
+1. Expressions calculations
+use the term "expr"
+use of the brackets under tilde `
+Case 1- using contants and printing directly
+echo `expr 10 + 5`
+Case 2- using contants and storing the result
+sum=`expr 10 + 5`
+echo $sum
+Case 3 - using variables and constants
+num1=10
+sum=`expr $num1 + 5`
+echo $sum
+Case 4 - using variables
+num1=10
+num2=5
+sum=`expr $num1 + $num2`
+echo $sum
+
+2. Operators
+Arithmetic operations: +, -, /, \*, %, ==, !=
+echo `expr $num1 % 2 != 0`
+
+Comparative operations: -gt, -lt, -ge, -le, -eq
+3. Conditional expression "IF"
+num=10
+if test `expr $num % 2 -gt 0`
+    then
+    echo "Odd Number"
+    else
+    echo "Even Number"
+fi
+    "</string>
+
+    <string name="part_4_notes">"
+        LOOPS
+
+****************************************
+FOR
+****************************************
+for var in list
+do
+	statement
+done
+##############
+for i in 1 2 3 4 5
+do
+  echo $i
+done
+##############
+for num in {1..10}
+do
+ echo "Number: $num"
+done
+##############
+for num in {1..11..2}
+do
+ echo "Number: $num"
+done
+###############
+i=1
+for day in Mon Tue Wed Thu Fri
+do
+ echo "Weekday $((i++)) : $day"
+done
+##############
+i=1
+weekdays="Mon Tue Wed Thu Fri"
+for day in $weekdays
+do
+ echo "Weekday $((i++)) : $day"
+done
+##############
+for (( i=1; i &lt;= 5; i++ ))
+do
+ echo "Random number $i: $RANDOM"
+done
+##############
+for ((i=1, j=10; i &lt;= 5 ; i++, j=j+5))
+do
+ echo "Number $i: $j"
+done
+##############
+
+
+****************************************
+While
+****************************************
+while [expression]
+do
+	statement
+done
+##########
+a=0
+while [ $a -lt 10 ]
+do
+   echo $a
+   a=`expr $a + 1`
+done
+###########
+x=1
+while [ $x -le 5 ]
+do
+  echo "Welcome $x times"
+  x=$(( $x + 1 ))
+done
+###########
+
+    "</string>
+    <string name="part_1_notes_head">Part 1 Notes</string>
+    <string name="part_2_notes_head">Part 2 Notes</string>
+    <string name="part_3_notes_head">Part 3 Notes</string>
+    <string name="part_4_notes_head">Part 4 Notes</string>
 </resources>

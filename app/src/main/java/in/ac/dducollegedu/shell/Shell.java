@@ -1,9 +1,5 @@
 package in.ac.dducollegedu.shell;
 
-import android.renderscript.ScriptGroup;
-import android.widget.TextView;
-
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,21 +56,11 @@ public class Shell {
                 /*
                  * Getting Output of resultant command
                  */
-                InputStreamReader reader = new InputStreamReader(output);
-                while (reader.ready()) {
-                    int i = reader.read();
-                    if (i <= 0) break;
-                    cmdOutput += (char) i;
-                }
+                cmdOutput += getOutput(output);
                 /*
                  * Getting Error output of resultant command
                  */
-                reader = new InputStreamReader(error);
-                while (reader.ready()) {
-                    int i = reader.read();
-                    if (i <= 0) break;
-                    cmdOutput += (char) i;
-                }
+                cmdOutput += getOutput(error);
             }
             
         } catch (Exception e) {
@@ -85,6 +71,16 @@ public class Shell {
             cmdOutput = cmdOutput.substring(0, linefeedi);
         }
         return cmdOutput;
+    }
+    private String getOutput(InputStream input) throws IOException {
+        InputStreamReader reader = new InputStreamReader(output);
+        String output = "";
+        while (reader.ready()) {
+            int i = reader.read();
+            if (i <= 0) break;
+            output += (char) i;
+        }
+        return output;
     }
     /**
      * Freeup the process memory and destroy the process

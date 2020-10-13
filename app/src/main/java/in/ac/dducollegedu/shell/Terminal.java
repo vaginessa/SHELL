@@ -43,28 +43,10 @@ public class Terminal extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_terminal, container, false);
-        setHasOptionsMenu(true);
         return binding.getRoot();
     }
 
-    /**
-     * This function is called when right option menu is created. This function inflates the option resource as
-     * given by R.menu.navdrawer_menu
-     * @param menu
-     * @param inflater
-     */
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.navdrawer_menu, menu);
-    }
 
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return NavigationUI.onNavDestinationSelected(item, Navigation.findNavController(requireView()))
-            || super.onOptionsItemSelected(item);
-    }
 
     /**
      * This function is called when fragment is already created and loading.
@@ -85,6 +67,7 @@ public class Terminal extends Fragment {
         terminalPrompt = promptName + ":%s/~$ ";
         try {
             terminal = new Shell(shellPath);
+            terminal.runCommand("cd "+home);
         } catch (IOException e) {
             Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
         }

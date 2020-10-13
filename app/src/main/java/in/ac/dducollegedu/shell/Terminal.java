@@ -1,5 +1,6 @@
 package in.ac.dducollegedu.shell;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,15 +21,24 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-import in.ac.dducollegedu.shell.databinding.ActivityMainBinding;
 import in.ac.dducollegedu.shell.databinding.FragmentTerminalBinding;
 
 
 public class Terminal extends Fragment {
-    String terminalPrompt;
-    Shell terminal;
-    FragmentTerminalBinding binding;
-    boolean busy = false;
+    String terminalPrompt; // Terminal Prompt
+    Shell terminal; // Shell object for executing commands from given shell path
+    FragmentTerminalBinding binding; // using Data Binding feature
+    SharedPreferences sharedPreferences; // Get settings preference object for further setting values
+
+    /**
+     * This function is called when fragment views are created. Initialising fragment with binding for
+     * further reference without using findViewById
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return binding root that is fragment itself
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,11 +47,18 @@ public class Terminal extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * This function is called when right option menu is created. This function inflates the option resource as
+     * given by R.menu.navdrawer_menu
+     * @param menu
+     * @param inflater
+     */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.navdrawer_menu, menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -48,14 +66,29 @@ public class Terminal extends Fragment {
             || super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This function is called when fragment is already created and loading.
+     * Before fragment loads, set some settings values and initialise the required parameter for
+     * further use.
+     */
     @Override
     public void onStart() {
-        terminalPrompt = "android:%s/~$ ";
+        // Getting settings object
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+
+        // Getting settings values
+        String promptName = sharedPreferences.getString("shell_prompt_name", "android");
+        String shellPath = sharedPreferences.getString("shell_path", "/system/bin/sh");
+        String home = sharedPreferences.getString("home", "/");
+
+        // Setting the preference settings values
+        terminalPrompt = promptName + ":%s/~$ ";
         try {
-            terminal = new Shell("/system/bin/sh");
+            terminal = new Shell(shellPath);
         } catch (IOException e) {
-            //Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
         }
+        binding.terminalView.setText(String.format(terminalPrompt, terminal.runCommand("pwd")));
         binding.sendToTerminal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +104,7 @@ public class Terminal extends Fragment {
         String command = binding.commandInput.getText().toString();
         if (command.equals("clear")) {
             binding.terminalView.setText("");
+            binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
             return ;
         }
         binding.terminalView.append(command + "\n");
@@ -79,7 +113,7 @@ public class Terminal extends Fragment {
             binding.terminalView.append(output);
         } catch (Exception e) {
             binding.terminalView.append("\n" + terminalPrompt);
-            //Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
             return;
         }
         binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));

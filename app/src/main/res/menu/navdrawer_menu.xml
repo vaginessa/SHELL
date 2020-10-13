@@ -4,11 +4,22 @@
 
     <item
         android:id="@+id/terminal_fragment"
+        android:icon="@mipmap/ic_launcher_foreground"
         android:title="Terminal" />
     <item
         android:id="@+id/editor_fragment"
+        android:icon="@android:drawable/ic_menu_edit"
         android:title="Shell Script Editor" />
     <item
+        android:id="@+id/online_bash_fragment"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Online Shell Scripting" />
+    <item
+        android:id="@+id/manual_fragment"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Shell Scripting Notes" />
+    <item
         android:id="@+id/settings_fragment"
+        android:icon="@android:drawable/ic_menu_manage"
         android:title="Settings" />
 </menu>

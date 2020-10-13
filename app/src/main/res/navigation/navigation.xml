@@ -12,10 +12,24 @@
         tools:layout="@layout/fragment_terminal">
         <action
             android:id="@+id/action_terminal_fragment_to_editor_fragment"
-            app:destination="@id/editor_fragment" />
+            app:destination="@id/editor_fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
         <action
             android:id="@+id/action_terminal_fragment_to_settingsFragment"
-            app:destination="@id/settings_fragment" />
+            app:destination="@id/settings_fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_terminal_fragment_to_BASHManual"
+            app:destination="@id/manual_fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_terminal_fragment_to_onlineScripting"
+            app:destination="@id/online_bash_fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/editor_fragment"
@@ -25,10 +39,43 @@
         <action
             android:id="@+id/action_editor_fragment_to_terminal_fragment"
             app:destination="@id/terminal_fragment"
+            app:enterAnim="@anim/fragment_fade_exit"
+            app:exitAnim="@anim/fragment_fade_enter"
             app:popUpTo="@id/terminal_fragment" />
     </fragment>
     <fragment
         android:id="@+id/settings_fragment"
         android:name="in.ac.dducollegedu.shell.SettingsFragment"
-        android:label="Settings"/>
+        android:label="Settings">
+        <action
+            android:id="@+id/action_settings_fragment_to_terminal_fragment"
+            app:destination="@id/terminal_fragment"
+            app:enterAnim="@anim/fragment_fade_exit"
+            app:exitAnim="@anim/fragment_fade_enter"
+            app:popUpTo="@id/terminal_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manual_fragment"
+        android:name="in.ac.dducollegedu.shell.BASHManual"
+        android:label="BASH Notes"
+        tools:layout="@layout/fragment_bash_manual" >
+        <action
+            android:id="@+id/action_manual_fragment_to_terminal_fragment"
+            app:destination="@id/terminal_fragment"
+            app:enterAnim="@anim/fragment_fade_exit"
+            app:exitAnim="@anim/fragment_fade_enter"
+            app:popUpTo="@id/terminal_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/online_bash_fragment"
+        android:name="in.ac.dducollegedu.shell.OnlineScripting"
+        android:label="OnlineScripting"
+        tools:layout="@layout/fragment_online_scripting">
+        <action
+            android:id="@+id/action_online_bash_fragment_to_terminal_fragment"
+            app:destination="@id/terminal_fragment"
+            app:enterAnim="@anim/fragment_fade_exit"
+            app:exitAnim="@anim/fragment_fade_enter"
+            app:popUpTo="@id/terminal_fragment" />
+    </fragment>
 </navigation>

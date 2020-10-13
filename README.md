@@ -4,9 +4,9 @@ Shell Scripting Android app with Terminal emulator to get control over Android C
   <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/main.jpg?raw=true">
 </p>
 <p align="center">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo1.jpg?raw=true" width="20%">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo2.jpg?raw=true" width="20%">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo3.jpg?raw=true" width="20%">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo1.jpg?raw=true" width="33%">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo2.jpg?raw=true" width="33%">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo3.jpg?raw=true" width="33%">
 </p>
 
 
@@ -27,7 +27,7 @@ Shell Scripting Android app with Terminal emulator to get control over Android C
 2. Input command (read) doesn't work 
 3. Infinite loop script crashes the app
 
-## Contribution
+## Contribute ?
 You are very welcome to pull request and make contributions.
 Here are few ideas for contribution : 
 1. Create a CLI Operating System like design by contributing in developing BASH's and other commands in C++.

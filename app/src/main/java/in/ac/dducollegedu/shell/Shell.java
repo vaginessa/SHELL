@@ -1,6 +1,7 @@
 package in.ac.dducollegedu.shell;
 
 import android.renderscript.ScriptGroup;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -78,6 +79,10 @@ public class Shell {
             
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        int linefeedi = cmdOutput.lastIndexOf('\n');
+        if (linefeedi >= 0 && linefeedi < cmdOutput.length()) {
+            cmdOutput = cmdOutput.substring(0, linefeedi);
         }
         return cmdOutput;
     }

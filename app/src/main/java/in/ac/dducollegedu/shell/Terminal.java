@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class Terminal extends Fragment {
     String terminalPrompt;
     Shell terminal;
     FragmentTerminalBinding binding;
+    boolean busy = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class Terminal extends Fragment {
 
     @Override
     public void onStart() {
-        terminalPrompt = "linux@linux:~/$ ";
+        terminalPrompt = "android:%s/~$ ";
         try {
             terminal = new Shell("/system/bin/sh");
         } catch (IOException e) {
@@ -67,6 +69,10 @@ public class Terminal extends Fragment {
 
     public void onClickSendButton() {
         String command = binding.commandInput.getText().toString();
+        if (command.equals("clear")) {
+            binding.terminalView.setText("");
+            return ;
+        }
         binding.terminalView.append(command + "\n");
         try {
             String output = terminal.runCommand(command);
@@ -76,7 +82,9 @@ public class Terminal extends Fragment {
             //Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             return;
         }
-        binding.terminalView.append("\n" + terminalPrompt);
+        binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
         binding.commandInput.setText("");
+        binding.terminalScroll.fullScroll(ScrollView.FOCUS_DOWN);
+        binding.sendToTerminal.setImageResource(android.R.drawable.ic_menu_send);
     }
 }

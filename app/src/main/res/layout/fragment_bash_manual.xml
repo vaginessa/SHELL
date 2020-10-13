@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BASHManual">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/notes_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/part_1_head"
+                style="@style/notes_heading"
+                android:text="@string/part_1_notes_head"
+                app:fontFamily="sans-serif-smallcaps" />
+
+            <TextView
+                android:id="@+id/part_1_notes"
+                style="@style/notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="@string/part_1_notes" />
+
+            <TextView
+                android:id="@+id/part_2_head"
+                style="@style/notes_heading"
+                android:text="@string/part_2_notes_head"
+                app:fontFamily="sans-serif-smallcaps" />
+
+            <TextView
+                android:id="@+id/part_2_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/part_2_notes"
+                style="@style/notes"
+                android:fontFamily="monospace"/>
+
+            <TextView
+                android:id="@+id/part_3_head"
+                style="@style/notes_heading"
+                android:text="@string/part_3_notes_head"
+                app:fontFamily="sans-serif-smallcaps" />
+
+            <TextView
+                android:id="@+id/part_3_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/part_3_notes"
+                style="@style/notes"
+                android:fontFamily="monospace"/>
+
+            <TextView
+                android:id="@+id/part_4_head"
+                style="@style/notes_heading"
+                android:text="@string/part_4_notes_head"
+                app:fontFamily="sans-serif-smallcaps" />
+
+            <TextView
+                android:id="@+id/part_4_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/part_4_notes"
+                style="@style/notes"
+                android:fontFamily="monospace"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
+</layout>

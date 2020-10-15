@@ -88,6 +88,7 @@ public class Terminal extends Fragment {
         if (command.equals("clear")) {
             binding.terminalView.setText("");
             binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
+            binding.commandInput.setText("");
             return ;
         }
         binding.terminalView.append(command + "\n");
@@ -99,7 +100,7 @@ public class Terminal extends Fragment {
             Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
             return;
         }
-        binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
+        binding.terminalView.append("\n\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
         binding.commandInput.setText("");
         binding.terminalScroll.fullScroll(ScrollView.FOCUS_DOWN);
         binding.sendToTerminal.setImageResource(android.R.drawable.ic_menu_send);

@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/online_bash_fragment"
         android:name="in.ac.dducollegedu.shell.OnlineScripting"
-        android:label="OnlineScripting"
+        android:label="Online Scripting Platform"
         tools:layout="@layout/fragment_online_scripting">
         <action
             android:id="@+id/action_online_bash_fragment_to_terminal_fragment"

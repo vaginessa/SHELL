@@ -43,18 +43,7 @@ public class Terminal extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_terminal, container, false);
-        return binding.getRoot();
-    }
 
-
-
-    /**
-     * This function is called when fragment is already created and loading.
-     * Before fragment loads, set some settings values and initialise the required parameter for
-     * further use.
-     */
-    @Override
-    public void onStart() {
         // Getting settings object
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
 
@@ -78,31 +67,38 @@ public class Terminal extends Fragment {
                 onClickSendButton();
             }
         });
-        super.onStart();
+
+        return binding.getRoot();
     }
 
-
-
     public void onClickSendButton() {
+        // GETTING COMMAND FROM INPUT EDITTEXT VIEW
         String command = binding.commandInput.getText().toString();
-        if (command.equals("clear")) {
+        // DOING CLEAR IF COMMAND IS CLEAR COMMAND
+        if (command.trim().equals("clear")) {
             binding.terminalView.setText("");
             binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
             binding.commandInput.setText("");
             return ;
         }
+        // ADDING COMMAND TO TERMINAL
         binding.terminalView.append(command + "\n");
         try {
+            // EXECUTING GIVEN COMMAND
             String output = terminal.runCommand(command);
+            // ADDING GIVEN COMMAND'S OUTPUT TO TERMINAL
             binding.terminalView.append(output);
         } catch (Exception e) {
+            // IF ERROR OCCUR IN RUNNING GIVEN COMMAND
             binding.terminalView.append("\n" + terminalPrompt);
             Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
             return;
         }
+        // ADDING NEW PROMPT TO TERMINAL FOR NEXT COMMAND PLACEMENT
         binding.terminalView.append("\n\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
+        // CLEAR COMMAND INPUT EDITTEXT
         binding.commandInput.setText("");
+        // AUTO-SCROLL DOWN TERMINAL ON OUTPUT PRODUCED
         binding.terminalScroll.fullScroll(ScrollView.FOCUS_DOWN);
-        binding.sendToTerminal.setImageResource(android.R.drawable.ic_menu_send);
     }
 }

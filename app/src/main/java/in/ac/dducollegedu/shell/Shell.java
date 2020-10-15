@@ -85,7 +85,7 @@ public class Shell {
     /**
      * Freeup the process memory and destroy the process
      */
-    public void finalize() throws Throwable {
+    public void finalize() {
         this.shell.destroy();
     }
     public static void main(String[] args) throws Throwable {
@@ -102,7 +102,6 @@ public class Shell {
             shell.runCommand("\n");
             System.out.flush();
         }
-        shell.finalize();
         in.close();
     }
 }

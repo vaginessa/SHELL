@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceManager;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -63,7 +64,7 @@ public class Terminal extends Fragment {
         // DOING CLEAR IF COMMAND IS CLEAR COMMAND
         if (command.trim().equals("clear")) {
             binding.terminalView.setText("");
-            binding.terminalView.append("\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
+            binding.terminalView.append("\n\n"+String.format(terminalPrompt, terminal.runCommand("pwd").replace(home, "~")));
             binding.commandInput.setText("");
             return ;
         }
@@ -95,8 +96,8 @@ public class Terminal extends Fragment {
      */
     private void initializeSHELL() {
         // Getting settings values
-        String promptName = sharedPreferences.getString("shell_prompt_name", "android");
-        String shellPath = sharedPreferences.getString("shell_path", "/system/bin/sh");
+        String promptName = sharedPreferences.getString("shell_prompt_name", getString(R.string.prompt_name));
+        String shellPath = sharedPreferences.getString("shell_path", getString(R.string.shell_path));
         home = sharedPreferences.getString("home", this.getContext().getFilesDir().getPath()+"/home");
         // Setting the preference settings values
         terminalPrompt = promptName + ":%s/-$ ";

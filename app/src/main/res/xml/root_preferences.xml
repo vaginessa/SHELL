@@ -4,7 +4,7 @@
     <PreferenceCategory app:title="Terminal Settings">
 
         <EditTextPreference
-            app:defaultValue="android"
+            app:defaultValue="@string/prompt_name"
             app:key="shell_prompt_name"
             app:title="Shell Prompt Name"
             app:useSimpleSummaryProvider="true" />
@@ -12,11 +12,12 @@
             app:key="shell_path"
             app:title="SHELL PATH"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="/system/bin/sh" />
+            app:defaultValue="@string/shell_path" />
         <EditTextPreference
             app:key="home"
             app:title="HOME value"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="@string/home"/>
 
     </PreferenceCategory>
     <PreferenceCategory app:title="Theme">

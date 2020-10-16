@@ -4,9 +4,12 @@
     <string name="greetings">Shell Scripting Lab</string>
     <string name="enter_code_here">Enter code here !</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="shell_path">/system/bin/sh</string>
+    <string name="prompt_name">android</string>
+    <string name="home">/data/user/in.ac.dducollegedu.shell/files/home</string>
+    <string name="used_online_shell">https://rextester.com/l/bash_online_compiler</string>
 
-    <string name="part_1_notes">"
+    <string name="part_1_notes"><![CDATA["
         BASIC COMMANDS
 1. Usage of following commands: ls, pwd, tty, cat, who, who am I, rm, mkdir, rmdir, touch,
 cd.
@@ -14,14 +17,14 @@ a) ls (listing of the files in current directory)
 ls -l (long listing of the files in current directory)
 b) pwd (path of the present working directory)
 c) tty (print the file name of the terminal connected to standard input. tty stands for TeleTYpewriter)
-tty --version (will print the version information and exits)
+tty —version (will print the version information and exits)
 d) cat filename (will print the content of the filename on terminal)
 cat main.sh (will print the content of the main file on the online shell)
 e) who (tell the system level information wrt booting, logged in users, etc.)
 f) who am I (displays the user name of the current system)
 whoami (will tell the user name of the online shell)
 g) rm filename (removes the file having filename)
-rm --help (learn about rm features)
+rm —help (learn about rm features)
 h) mkdir foldername (creates a folder having foldername)
 [Run the following together to check their working]
 mkdir test1
@@ -127,7 +130,7 @@ add= echo "1+2" | bc
 echo $add
 ****************************************************************************************************
 
-    "</string>
+    "]]></string>
 
 
     <string name="part_2_notes">"

@@ -23,7 +23,7 @@ public class OnlineScripting extends Fragment {
 
     @Override
     public void onStart() {
-        binding.onlineScriptingWeb.loadUrl("https://rextester.com/l/bash_online_compiler");
+        binding.onlineScriptingWeb.loadUrl(getString(R.string.used_online_shell));
         binding.onlineScriptingWeb.getSettings().setJavaScriptEnabled(true);
         super.onStart();
     }

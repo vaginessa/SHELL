@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout);
         NavigationUI.setupWithNavController(binding.navView, navController);
         File initialise = new File(this.getApplicationContext().getFilesDir().getPath()+"/home");
-        initialise.mkdir();
+        if (!initialise.exists())
+            initialise.mkdir();
     }
 
     @Override

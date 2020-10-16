@@ -52,7 +52,7 @@
             android:background="#01151C"
             android:ems="10"
             android:hint="$"
-            android:inputType="textPersonName"
+            android:inputType="textNoSuggestions"
             android:paddingRight="10dp"
             android:textColor="@android:color/white"
             android:textColorHint="#7A7979"

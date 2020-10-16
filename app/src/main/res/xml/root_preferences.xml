@@ -16,8 +16,7 @@
         <EditTextPreference
             app:key="home"
             app:title="HOME value"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="/"/>
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
     <PreferenceCategory app:title="Theme">

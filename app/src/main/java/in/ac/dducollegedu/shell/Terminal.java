@@ -29,6 +29,7 @@ public class Terminal extends Fragment {
     Shell terminal; // Shell object for executing commands from given shell path
     FragmentTerminalBinding binding; // using Data Binding feature
     SharedPreferences sharedPreferences; // Get settings preference object for further setting values
+    String home;
 
     /**
      * This function is called when fragment views are created. Initialising fragment with binding for
@@ -46,28 +47,7 @@ public class Terminal extends Fragment {
 
         // Getting settings object
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-
-        // Getting settings values
-        String promptName = sharedPreferences.getString("shell_prompt_name", "android");
-        String shellPath = sharedPreferences.getString("shell_path", "/system/bin/sh");
-        String home = sharedPreferences.getString("home", "/");
-
-        // Setting the preference settings values
-        terminalPrompt = promptName + ":%s/~$ ";
-        try {
-            terminal = new Shell(shellPath);
-            terminal.runCommand("cd "+home);
-        } catch (IOException e) {
-            Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
-        }
-        binding.terminalView.setText(String.format(terminalPrompt, terminal.runCommand("pwd")));
-        binding.sendToTerminal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickSendButton();
-            }
-        });
-
+        initializeSHELL();
         return binding.getRoot();
     }
 
@@ -95,10 +75,38 @@ public class Terminal extends Fragment {
             return;
         }
         // ADDING NEW PROMPT TO TERMINAL FOR NEXT COMMAND PLACEMENT
-        binding.terminalView.append("\n\n" + String.format(terminalPrompt, terminal.runCommand("pwd")));
+        binding.terminalView.append("\n\n"+String.format(terminalPrompt, terminal.runCommand("pwd").replace(home, "~")));
         // CLEAR COMMAND INPUT EDITTEXT
         binding.commandInput.setText("");
         // AUTO-SCROLL DOWN TERMINAL ON OUTPUT PRODUCED
         binding.terminalScroll.fullScroll(ScrollView.FOCUS_DOWN);
+    }
+
+    /**
+     * initializeSHELL initialises the basic parameters such as
+     * SHELL'S PATH, HOME, setting current working directory as HOME and
+     * setting onClickListener for send command button
+     */
+    private void initializeSHELL() {
+        // Getting settings values
+        String promptName = sharedPreferences.getString("shell_prompt_name", "android");
+        String shellPath = sharedPreferences.getString("shell_path", "/system/bin/sh");
+        home = sharedPreferences.getString("home", this.getContext().getFilesDir().getPath()+"/home");
+        // Setting the preference settings values
+        terminalPrompt = promptName + ":%s/-$ ";
+        try {
+            terminal = new Shell(shellPath);
+            terminal.runCommand("HOME="+home);
+            terminal.runCommand("cd");
+        } catch (IOException e) {
+            Toast.makeText(this.getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+        }
+        binding.terminalView.setText(String.format(terminalPrompt, terminal.runCommand("pwd").replace(home, "~")));
+        binding.sendToTerminal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSendButton();
+            }
+        });
     }
 }

@@ -51,6 +51,12 @@ public class Terminal extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * onClickSendButton -> Click Listener for send command button
+     *
+     * gets commands and run it on shell then get outputs and error if any
+     * then sets the output to the terminal and reinitialise terminal prompt
+     */
     public void onClickSendButton() {
         // GETTING COMMAND FROM INPUT EDITTEXT VIEW
         String command = binding.commandInput.getText().toString();

@@ -1,15 +1,18 @@
 package in.ac.dducollegedu.shell;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,10 +23,12 @@ import in.ac.dducollegedu.shell.databinding.FragmentEditorBinding;
 
 public class Editor extends Fragment {
     FragmentEditorBinding binding;
+    SharedPreferences sharedPreferences;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_editor, container, false);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         return binding.getRoot();
     }
 
@@ -39,9 +44,23 @@ public class Editor extends Fragment {
         });
         super.onStart();
     }
+    /**
+     * initializeSHELL initialises the basic parameters such as
+     * SHELL'S PATH, HOME, setting current working directory as HOME and
+     * setting onClickListener for send command button
+     */
+    private Shell initialize() throws IOException {
+        // Getting settings values
+        String shellPath = sharedPreferences.getString("shell_path", "/system/bin/sh");
+        String home = sharedPreferences.getString("home", this.getContext().getFilesDir().getPath()+"/home");
+        Shell shell = new Shell(shellPath);
+        shell.runCommand("HOME="+home);
+        shell.runCommand("cd");
+        return shell;
+    }
     public void onClickRunButton() throws IOException {
         String[] code = binding.editCode.getText().toString().split("\n");
-        Shell sh = new Shell("/system/bin/sh");
+        Shell sh = initialize();
         String output = "";
         for (String cmd: code) {
             output += sh.runCommand(cmd);

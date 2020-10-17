@@ -9,7 +9,7 @@
 
     <ScrollView
         android:id="@+id/editor_scroll"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="#00000F"
         app:layout_constraintEnd_toEndOf="parent"

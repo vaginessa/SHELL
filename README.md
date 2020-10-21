@@ -15,11 +15,20 @@ Shell Scripting Android app with Terminal emulator to get control over Android C
 ```
   git clone https://github.com/abhinandanarya06/SHELL.git
 ```
-2. Run the following for producing and installing debug version of the app
+2. Create a file ```local.properties``` and add content as follows
 ```
-  ./gradlew assembleDebug # FOR PRODUCING APK FILE IN app/build/outputs/apk/debug 
+sdk.dir=<ANDROID SDK PATH>
+storeFile=<YOUR KEYSTORE FILE>
+keyAlias=<YOUR KEYSTORE KEY ALIAS>
+storePassword=<YOUR KEYSTORE PASSWORD>
+keyPassword=<YOUR KEY PASSWORD>
+```
+
+2. Run the following for producing and installing release version of the app
+```
+  ./gradlew assembleRelease # FOR PRODUCING APK FILE IN app/build/outputs/apk/debug 
   
-  ./gradlew installDebug # FOR INSTALLING APP DIRECTLY. MAKE SURE PHONE IS CONNECTED
+  ./gradlew installRelease # FOR INSTALLING APP DIRECTLY. MAKE SURE PHONE IS CONNECTED
 ```
 
 ## Issues

@@ -26,7 +26,7 @@ keyPassword=<YOUR KEY PASSWORD>
 
 2. Run the following for producing and installing release version of the app
 ```
-  ./gradlew assembleRelease # FOR PRODUCING APK FILE IN app/build/outputs/apk/debug 
+  ./gradlew assembleRelease # FOR PRODUCING APK FILE IN app/build/outputs/apk/release
   
   ./gradlew installRelease # FOR INSTALLING APP DIRECTLY. MAKE SURE PHONE IS CONNECTED
 ```

@@ -1,0 +1,5 @@
+<i>$HELL</i> helps you getting used to shell scripting. It brings you a terminal emulator with a script editor built-in, so you can get control over Android CLI Interface. Some minor culprits:
+
+* Terminal UI is not fully interactive
+* Input command (read) does not work
+* Infinite loop script crashes the app (so better do not create/run such)

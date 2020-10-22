@@ -1,12 +1,12 @@
 # SHELL for Android
 Shell Scripting Android app with Terminal emulator to get control over Android CLI Interface.
 <p align="center">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/main.jpg?raw=true">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/main.jpg?raw=true">
 </p>
 <p align="center">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo1.jpg?raw=true" width="33%">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo2.jpg?raw=true" width="33%">
-  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/.idea/res/demo3.jpg?raw=true" width="33%">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg?raw=true" width="33%">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/demo2.jpg?raw=true" width="33%">
+  <img src="https://github.com/abhinandanarya06/SHELL/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/demo3.jpg?raw=true" width="33%">
 </p>
 
 
